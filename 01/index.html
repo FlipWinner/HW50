@@ -8,6 +8,47 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
+<div id="app"></div>
+<script type="text/babel">
+    const rootApp = document.getElementById('app');
+    let notFoundPic = "";
 
+    const Movie = ({name,year,url}) => {
+        url = url? url : notFoundPic
+        return (
+            <div className="card">
+                <img
+                    src={url} alt={name}
+                    className="card-img"
+                />
+                <h3>{name}</h3>
+                <span>{year}</span>
+            </div>
+        );
+    };
+
+    const movies = [
+        {name: "Interstellar", year: 2014, url: "https://a.allegroimg.com/original/11c640/c4aa11f443e9bdad1482b9cdf10f/INTERSTELLAR-DVD"},
+        {name: "IT", year: 2017, url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSo1vT8frPsASRoxAGpz_Fpv4tD-N5cPDUu_VI_pD5pBJttqpvhh1ICaNQyeGGEhNxPKNYkIYhDjYMkZ2zTu0vqpFJllGxQ8GlQns_OSo&s=10"},
+        {name: "The Dark Knight", year: 2008, url: "https://m.media-amazon.com/images/S/pv-target-images/e9a43e647b2ca70e75a3c0af046c4dfdcd712380889779cbdc2c57d94ab63902.jpg"}
+        ];
+
+
+    const content = (
+      <div>
+          <header>
+              <div className="head"></div>
+          </header>
+          <div className="cards container">
+              {movies.map(movie => (<Movie key={movie.index} name={movie.name} year={movie.year} url={movie.url}/>))}
+          </div>
+          <footer>
+              <div className="footer"></div>
+          </footer>
+      </div>
+    );
+
+    ReactDOM.render(content, rootApp);
+</script>
 </body>
 </html>
