@@ -88,7 +88,7 @@
                     efficitur
                     pellentesque. Maecenas varius felis felis.</p>
                 <div className="works-cards">
-                    {cards.map((card, index) => (<Card title={card.title} paragraph={card.paragraph} />))}
+                    {cards.map((card, index) => (<Card key={card.index} title={card.title} paragraph={card.paragraph} />))}
                 </div>
             </div>
             </body>
