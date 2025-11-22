@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script type="text/babel">
+    const rootApp = document.getElementById('app');
+
+    const Head = ({url}) => {
+        return (
+                <div className="head container">
+                    <nav className="head-nav">
+                        <ul>
+                            <li><a href={url}>Home</a></li>
+                            <li><a href={url}>Properties</a></li>
+                            <li><a href={url}>About</a></li>
+                            <li><a href={url}>Contact</a></li>
+                        </ul>
+                    </nav>
+                    <div className="head-links">
+                        <a href={url}>Cart</a>
+                        <button type="button">Explore property</button>
+                    </div>
+                </div>
+        );
+    };
+
+    const Foot = ({url}) => {
+        return (
+                <div className="foot container">
+                    <a href={url} className="foot-content">© Realco by Minimal Square</a>
+                    <div className="foot-links">
+                        <a href={url} className="foot-links-1">facebook</a>
+                        <a href={url} className="foot-links-2">insta</a>
+                        <a href={url} className="foot-links-3">X</a>
+                        <a href={url} className="foot-links-4">idkIN</a>
+                    </div>
+                </div>
+        );
+    };
+
+    const SideBar = ({homePageName, aboutPageName, contactPageName}) => {
+        return (
+                <div className="side-bar">
+                    <div className="side-bar-content">
+                        <button type='button' className={homePageName + "side-bar-span"}>{homePageName}</button>
+                        <button type='button' className={aboutPageName + "side-bar-span"}>{aboutPageName}</button>
+                        <button type='button' className={contactPageName + "side-bar-span"}>{contactPageName}</button>
+                    </div>
+                </div>
+        );
+    };
+
+    const Card = ({title, paragraph}) => {
+        return (
+            <div className="card card-house">
+                <h4 className="card-title">{title}</h4>
+                <p>{paragraph}</p>
+                <a href="#">Read more</a>
+            </div>
+        );
+    };
+
+    const cards = [
+        {title: "Find property", paragraph: "Odales mauris quis tellus facilisis, vel mattis magna interdum. Curabitur eget aliquam elit. In mauris purus, auctor a eleifend non."},
+        {title: "Make a deal", paragraph: "Pellentesque suscipit mauris. Nam dictum, erat a volutpat varius, urna nisi sollicitudin orci, sagittis facilisis odio tortor ac mi."},
+        {title: "Get your keys", paragraph: "Nulla vel bibendum purus. Etiam tempus quam vel pulvinar rutrum. Duis semper, metus vitae fermentum consequat."},
+    ];
+
+    const content = (
+        <>
+            <header>
+                <Head url="#"/>
+            </header>
+            <body>
+                <SideBar homePageName="Home" aboutPageName="About us" contactPageName="Contacts"/>
+                <div className="container works">
+                <h2 className="title">How it works</h2>
+                <p className="works-description">Nunc laoreet consequat nunc at consequat. Praesent aliquam mi id
+                    efficitur
+                    pellentesque. Maecenas varius felis felis.</p>
+                <div className="works-cards">
+                    {cards.map((card, index) => (<Card title={card.title} paragraph={card.paragraph} />))}
+                </div>
+            </div>
+            </body>
+            <footer>
+                <Foot url="#"/>
+            </footer>
+        </>
+    );
+
+
+    ReactDOM.render(content, rootApp);
+</script>
+</body>
+</html>

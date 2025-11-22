@@ -38,7 +38,7 @@
     const content = (
       <div>
           <div className="cards container">
-              {movies.map(movie => (<Movie key={movie.index} name={movie.name} year={movie.year} url={movie.url}/>))}
+              {movies.map((movie, index) => (<Movie key={movie.index} name={movie.name} year={movie.year} url={movie.url}/>))}
           </div>
       </div>
     );
